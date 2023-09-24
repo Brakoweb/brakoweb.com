@@ -37,3 +37,33 @@ function handleSubmit(event) {
   );
   $buttonMailto.click();
 }
+
+// Toggle Dark/light mode
+const darkModeToggle = document.getElementById("dark-mode-toggle");
+const body = document.body;
+
+// localStorage for user preference
+if (localStorage.getItem("dark-mode") === "enabled") {
+  enableDarkMode();
+}
+
+// activate dark mode
+function enableDarkMode() {
+  body.classList.add("dark-mode");
+  localStorage.setItem("dark-mode", "enabled");
+}
+
+// disable dark mode
+function disableDarkMode() {
+  body.classList.remove("dark-mode");
+  localStorage.setItem("dark-mode", "disabled");
+}
+
+// toggle
+darkModeToggle.addEventListener("click", () => {
+  if (body.classList.contains("dark-mode")) {
+    disableDarkMode();
+  } else {
+    enableDarkMode();
+  }
+});
